@@ -1,0 +1,47 @@
+{
+  "name": "ga4-node",
+  "description": "A library for reporting Google Analytics 4 events from Node.js",
+  "version": "0.0.1",
+  "license": "MIT",
+  "type": "module",
+  "platform": "node",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.js",
+    "./*": "./dist/*/index.js"
+  },
+  "scripts": {
+    "dev": "tsmodule dev",
+    "build": "tsmodule build",
+    "test": "ava",
+    "pretest": "tsmodule build",
+    "prepublishOnly": "yarn test",
+    "lint": "eslint src --fix"
+  },
+  "ava": {
+    "timeout": "10m",
+    "files": [
+      "test/**/*.test.ts"
+    ],
+    "extensions": {
+      "ts": "module"
+    },
+    "nodeArguments": [
+      "--no-warnings",
+      "--loader=@tsmodule/tsmodule/loader"
+    ]
+  },
+  "devDependencies": {
+    "@tsmodule/tsmodule": "^40.8.0",
+    "@types/node": "^18.11.4",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "ava": "^5.0.1",
+    "eslint": "^8.26.0",
+    "typescript": "^4.8.4"
+  }
+}
