@@ -1,4 +1,4 @@
-# GA-4 for Node
+# Google Analytics for Node
 
 Report Google Analytics 4 events from a Node server.
 
