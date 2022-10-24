@@ -1,7 +1,7 @@
 type HasCookies = {
-  cookies: Partial<{
+  cookies: {
     [key: string]: string;
-  }>
+  }
 };
 
 export interface RequestWithCookies<T extends HasCookies = HasCookies> {
