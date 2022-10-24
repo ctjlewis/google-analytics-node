@@ -1,7 +1,7 @@
 {
   "name": "ga4-node",
   "description": "A library for reporting Google Analytics 4 events from Node.js",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": "MIT",
   "type": "module",
   "platform": "node",
@@ -21,19 +21,6 @@
     "pretest": "tsmodule build",
     "prepublishOnly": "yarn test",
     "lint": "eslint src --fix"
-  },
-  "ava": {
-    "timeout": "10m",
-    "files": [
-      "test/**/*.test.ts"
-    ],
-    "extensions": {
-      "ts": "module"
-    },
-    "nodeArguments": [
-      "--no-warnings",
-      "--loader=@tsmodule/tsmodule/loader"
-    ]
   },
   "devDependencies": {
     "@tsmodule/tsmodule": "^40.8.0",
