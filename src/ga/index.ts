@@ -45,6 +45,10 @@ export const ga = async (
     throw new Error("Missing GA_MEASUREMENT_ID. Supply `measurementId` arg or set `GA_MEASUREMENT_ID` env var.");
   }
 
+  if (!events.length) {
+    throw new Error("Missing events. Supply at least one event.");
+  }
+
   /**
    * Extract cookies from the request object.
    */
