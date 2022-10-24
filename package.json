@@ -1,6 +1,14 @@
 {
   "name": "ga4-node",
   "description": "A library for reporting Google Analytics 4 events from Node.js",
+  "keywords": [
+    "google",
+    "analytics",
+    "ga4",
+    "google-analytics",
+    "google-analytics-4",
+    "nodejs"
+  ],
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
