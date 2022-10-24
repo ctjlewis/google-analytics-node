@@ -51,6 +51,10 @@ export const ga = async ({
    */
   const { _ga: client_id } = cookies;
 
+  if (!client_id) {
+    throw new Error("Missing _ga cookie. Ensure the _ga cookie is set on the request.");
+  }
+
   return  await fetch(
     `https://www.google-analytics.com/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`,
     {
