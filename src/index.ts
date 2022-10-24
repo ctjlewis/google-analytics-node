@@ -1,10 +1,12 @@
-export type RequestWithCookies = {
-  [key: string]: unknown;
-
+type HasCookies = {
   cookies: Partial<{
     [key: string]: string;
-  }>;
+  }>
 };
+
+export interface RequestWithCookies<T extends HasCookies = HasCookies> {
+  cookies: T["cookies"];
+}
 
 export interface GaEvent {
   name: string;
