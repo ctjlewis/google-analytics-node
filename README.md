@@ -38,7 +38,7 @@ Whenever you send an event, the following will be needed:
 E.g., the following Next API route handler:
 
 ```ts
-import { ga } from "ga4-node"
+import { googleAnalytics } from "ga4-node"
 
 /**
  * GA_API_SECRET and GA_MEASUREMENT_ID provided via process.env.
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
   /**
    * Send GA event.
    */
-  await ga({
+  await googleAnalytics({
     req,
     events: [
       {

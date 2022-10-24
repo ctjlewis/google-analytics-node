@@ -1,2 +1,2 @@
-export * from "./ga";
+export * from "./googleAnalytics";
 export * from "./utils";

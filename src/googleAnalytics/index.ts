@@ -8,14 +8,14 @@ export interface RequestWithCookies<T extends HasCookies = HasCookies> {
   cookies: T["cookies"];
 }
 
-export interface GaEvent {
+export interface GoogleAnalyticsEvent {
   name: string;
   params: {
     [key: string]: string;
   };
 }
 
-export interface GaArgs {
+export interface GoogleAnalyticsOptions {
   req: RequestWithCookies;
   apiSecret?: string;
   measurementId?: string;
@@ -29,13 +29,13 @@ export interface GaArgs {
  *
  * @returns The status code of the request.
  */
-export const ga = async (
+export const googleAnalytics = async (
   {
     req,
     apiSecret: api_secret = process.env.GA_API_SECRET,
     measurementId: measurement_id = process.env.GA_MEASUREMENT_ID,
-  }: GaArgs,
-  ...events: GaEvent[]
+  }: GoogleAnalyticsOptions,
+  ...events: GoogleAnalyticsEvent[]
 ) => {
   if (!api_secret) {
     throw new Error("Missing GA_API_SECRET. Supply `apiSecret` arg or set `GA_API_SECRET` env var.");
