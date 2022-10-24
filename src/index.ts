@@ -51,7 +51,7 @@ export const ga = async ({
    */
   const { _ga: client_id } = cookies;
 
-  const result = await fetch(
+  return  await fetch(
     `https://www.google-analytics.com/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`,
     {
       method: "POST",
@@ -61,6 +61,4 @@ export const ga = async ({
       })
     }
   );
-
-  return await result.json();
 };
