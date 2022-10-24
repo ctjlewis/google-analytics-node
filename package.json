@@ -1,5 +1,5 @@
 {
-  "name": "ga4-node",
+  "name": "node-google-analytics",
   "description": "A library for reporting Google Analytics 4 events from Node.js",
   "keywords": [
     "google",
