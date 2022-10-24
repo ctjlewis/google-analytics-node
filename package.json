@@ -1,14 +1,6 @@
 {
   "name": "node-google-analytics",
   "description": "A library for reporting Google Analytics 4 events from Node.js",
-  "keywords": [
-    "google",
-    "analytics",
-    "ga4",
-    "google-analytics",
-    "google-analytics-4",
-    "nodejs"
-  ],
   "version": "1.0.2",
   "license": "MIT",
   "type": "module",
@@ -39,5 +31,17 @@
     "eslint": "^8.26.0",
     "typescript": "^4.8.4"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "google",
+    "analytics",
+    "ga4",
+    "google-analytics",
+    "google-analytics-4",
+    "nodejs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ctjlewis/google-analytics-node.git"
+  }
 }
