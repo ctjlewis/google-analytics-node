@@ -21,8 +21,14 @@ Whenever you send an event, the following will be needed:
   1. an API secret, provided via `ga({ apiSecret })` arg or
     `process.env.GA_API_SECRET`.
 
+      > To create a new secret, navigate to: **Admin > Data Streams > choose
+      your stream > Measurement Protocol > Create**.
+
   2. a measurement ID associated with a data stream, provided via `ga({
     measurementId })` or `process.env.GA_MEASUREMENT_ID` env var.
+
+      > Found in the Google Analytics UI under: **Admin > Data Streams > choose
+      your stream > Measurement ID**.
 
   3. a `req` object containing a `{ cookies: { ... } }` property, from which the
     client ID will be extracted.
