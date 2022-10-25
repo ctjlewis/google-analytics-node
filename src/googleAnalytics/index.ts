@@ -1,11 +1,9 @@
-type HasCookies = {
-  cookies: {
-    [key: string]: string;
-  }
-};
+export interface RequestWithCookies {
+  [key: string]: unknown | undefined;
 
-export interface RequestWithCookies<T extends HasCookies = HasCookies> {
-  cookies: T["cookies"];
+  cookies: Partial<{
+    [key: string]: string;
+  }>;
 }
 
 export interface GoogleAnalyticsEvent {
