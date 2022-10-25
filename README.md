@@ -16,6 +16,18 @@ is recommended. User requests to your API routes will then contain the necessary
 
 ### Usage
 
+```ts
+await googleAnalytics(
+  options = { 
+    cookies: {},
+    measurementId = process.env.GA_MEASUREMENT_ID,
+    apiSecret = process.env.GA_API_SECRET
+  }, 
+
+  ...events,
+);
+```
+
 Whenever you send an event, the following will be needed:
 
   1. an API secret, provided via `ga({ apiSecret })` arg or
@@ -33,7 +45,7 @@ Whenever you send an event, the following will be needed:
   3. a `cookies` object of form `{ [key: string]: string | undefined }`, from
      which the client ID will be extracted.
 
-  4. an `events` array, of form `{ name: ..., params: { ... } }`.
+  4. an `events` array, of form `{ name: ..., params: { ... } }[]`.
 
 E.g., the following Next API route handler:
 
@@ -49,23 +61,20 @@ export default async function handler(req, res) {
    */
   await makeOfflinePurchase(/* ... */);
   /**
-   * Send GA event.
+   * Send GA events.
    */
   const { cookies } = req;
-  await googleAnalytics({
-    cookies,
-    events: [
-      {
-        name: "offline_purchase",
-        params: {
-          engagement_time_msec: "100",
-          session_id: "123",
-          // ...
-        },
+  await googleAnalytics(
+    { cookies },
+    {
+      name: "offline_purchase",
+      params: {
+        engagement_time_msec: "100",
+        session_id: "123",
       },
-      // ...,
-    ]
-  });
+    },
+    // ...,
+  );
 }
 ```
 
