@@ -30,8 +30,8 @@ Whenever you send an event, the following will be needed:
       > Found in the Google Analytics UI under: **Admin > Data Streams > choose
       your stream > Measurement ID**.
 
-  3. a `req` object containing a `{ cookies: { ... } }` property, from which the
-    client ID will be extracted.
+  3. a `cookies` object of form `{ [key: string]: string | undefined }`, from
+     which the client ID will be extracted.
 
   4. an `events` array, of form `{ name: ..., params: { ... } }`.
 
@@ -51,8 +51,9 @@ export default async function handler(req, res) {
   /**
    * Send GA event.
    */
+  const { cookies } = req;
   await googleAnalytics({
-    req,
+    cookies,
     events: [
       {
         name: "offline_purchase",

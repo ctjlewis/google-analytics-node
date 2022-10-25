@@ -1,11 +1,3 @@
-export interface RequestWithCookies {
-  [key: string]: unknown | undefined;
-
-  cookies: Partial<{
-    [key: string]: string;
-  }>;
-}
-
 export interface GoogleAnalyticsEvent {
   name: string;
   params: {
@@ -14,7 +6,13 @@ export interface GoogleAnalyticsEvent {
 }
 
 export interface GoogleAnalyticsOptions {
-  req: RequestWithCookies;
+  /**
+   * The cookies associated with the request.
+   */
+  cookies: Partial<{
+    [key: string]: string;
+  }>;
+
   apiSecret?: string;
   measurementId?: string;
 }
@@ -29,7 +27,7 @@ export interface GoogleAnalyticsOptions {
  */
 export const googleAnalytics = async (
   {
-    req,
+    cookies,
     apiSecret: api_secret = process.env.GA_API_SECRET,
     measurementId: measurement_id = process.env.GA_MEASUREMENT_ID,
   }: GoogleAnalyticsOptions,
@@ -47,10 +45,6 @@ export const googleAnalytics = async (
     throw new Error("Missing events. Supply at least one event.");
   }
 
-  /**
-   * Extract cookies from the request object.
-   */
-  const { cookies } = req;
   /**
    * Extract the client_id from the request cookies.
    */
