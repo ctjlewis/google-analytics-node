@@ -23,7 +23,7 @@
     "lint": "eslint src --fix"
   },
   "devDependencies": {
-    "@tsmodule/tsmodule": "^40.8.0",
+    "@tsmodule/tsmodule": "^40.9.0",
     "@types/node": "^18.11.4",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",

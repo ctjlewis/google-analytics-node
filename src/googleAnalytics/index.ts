@@ -59,7 +59,9 @@ export const googleAnalytics = async (
   const { _ga: client_id } = cookies;
 
   if (!client_id) {
-    throw new Error("Missing _ga cookie. Ensure the _ga cookie is set on the request.");
+    // eslint-disable-next-line no-console
+    console.error("Missing _ga cookie. Ensure the _ga cookie is set on the request.");
+    return;
   }
 
   const { status } = await fetch(
