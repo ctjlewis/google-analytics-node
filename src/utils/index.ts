@@ -1,6 +1,8 @@
 export const getGAVariables = () => {
   const GA_API_SECRET = process.env.GA_API_SECRET;
-  const GA_MEASUREMENT_ID = process.env.GA_MEASUREMENT_ID;
+  const GA_MEASUREMENT_ID =
+    process.env.GA_MEASUREMENT_ID || process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
   return { GA_API_SECRET, GA_MEASUREMENT_ID };
 };
 
