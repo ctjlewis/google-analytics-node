@@ -29,7 +29,10 @@ export const googleAnalytics = async (
   {
     cookies,
     apiSecret: api_secret = process.env.GA_API_SECRET,
-    measurementId: measurement_id = process.env.GA_MEASUREMENT_ID,
+    measurementId: measurement_id = (
+      process.env.GA_MEASUREMENT_ID ||
+      process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+    ),
   }: GoogleAnalyticsOptions,
   ...events: GoogleAnalyticsEvent[]
 ) => {

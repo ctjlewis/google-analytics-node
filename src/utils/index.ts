@@ -8,7 +8,7 @@ export const getGAVariables = () => {
 
 export const hasGAVariables = () => {
   const { GA_API_SECRET, GA_MEASUREMENT_ID } = getGAVariables();
-  return Boolean(GA_API_SECRET && GA_MEASUREMENT_ID);
+  return Boolean(GA_API_SECRET) && Boolean(GA_MEASUREMENT_ID);
 };
 
 export const assertHasGAVariables = () => {

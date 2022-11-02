@@ -1,7 +1,7 @@
 {
   "name": "node-google-analytics",
   "description": "A library for reporting Google Analytics 4 events from Node.js",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "license": "MIT",
   "type": "module",
   "platform": "node",
