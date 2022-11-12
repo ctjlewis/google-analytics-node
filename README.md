@@ -4,46 +4,45 @@ Report Google Analytics 4 events from a Node server.
 
 ### Prerequisites
 
-This library reads a `_ga` cookie from a network request, and relies on this
+This library reads a `_ga` cookie from a `{ cookes }` object, and relies on this
 being available.  This will typically involve adding Google Analytics to your
-client-side, receiving network requests to endpoints from users with the cookie
-embedded in them, and forwarding it to the `await ga({ req, ... })` function.
+client-side, extracting the cookies from the request in your endpoint, and
+passing them to the `await ga({ cookies, ... })` function (see **Usage** below).
 
 If you're using Next,
 [`nextjs-google-analytics`](https://www.npmjs.com/package/nextjs-google-analytics)
-is recommended. User requests to your API routes will then contain the necessary
-`_ga` cookie, and you can send server-side GA4 events.
+is recommended for the client-side. User requests to your API routes will then
+contain the necessary `_ga` cookie, and you can send server-side GA4 events.
 
 ### Usage
 
 ```ts
 await googleAnalytics(
-  options = { 
+  { 
     cookies: {},
     measurementId = process.env.GA_MEASUREMENT_ID,
     apiSecret = process.env.GA_API_SECRET
   }, 
-
   ...events,
 );
 ```
 
 Whenever you send an event, the following will be needed:
 
-  1. an API secret, provided via `ga({ apiSecret })` arg or
+  1. an API secret, provided via `ga({ apiSecret }, ...events)` or
     `process.env.GA_API_SECRET`.
 
       > To create a new secret, navigate to: **Admin > Data Streams > choose
       your stream > Measurement Protocol > Create**.
 
   2. a measurement ID associated with a data stream, provided via `ga({
-    measurementId })` or `process.env.GA_MEASUREMENT_ID` env var.
+    measurementId }, ...events)` or `process.env.GA_MEASUREMENT_ID` env var.
 
       > Found in the Google Analytics UI under: **Admin > Data Streams > choose
       your stream > Measurement ID**.
 
   3. a `cookies` object of form `{ [key: string]: string | undefined }`, from
-     which the client ID will be extracted.
+     which the Google Analytics ID will be extracted.
 
   4. an `events` array, of form `{ name: ..., params: { ... } }[]`.
 
