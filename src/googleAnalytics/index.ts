@@ -73,8 +73,18 @@ export const googleAnalytics = async (
       method: "POST",
       body: JSON.stringify({
         client_id,
-        events,
-        debug_mode: debug,
+        events:
+          debug
+            ? events.map(
+              (event) => ({
+                ...event,
+                params: {
+                  ...event.params,
+                  debug_mode: "true",
+                },
+              })
+            )
+            : events,
       })
     }
   );
