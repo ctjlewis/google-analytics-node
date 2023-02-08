@@ -80,7 +80,7 @@ export const googleAnalytics = async (
                 ...event,
                 params: {
                   ...event.params,
-                  debug_mode: "true",
+                  debug_mode: true,
                 },
               })
             )
