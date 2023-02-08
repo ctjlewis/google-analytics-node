@@ -15,6 +15,13 @@ export interface GoogleAnalyticsOptions {
 
   apiSecret?: string;
   measurementId?: string;
+  /**
+   * If enabled, will set `debug_mode: true`. See **Admin > DebugView**.
+   *
+   * @see https://support.google.com/analytics/answer/7201382#zippy=%2Cgoogle-tag-websites
+   *
+   */
+  debug?: boolean;
 }
 
 /**
@@ -28,6 +35,7 @@ export interface GoogleAnalyticsOptions {
 export const googleAnalytics = async (
   {
     cookies,
+    debug = false,
     apiSecret: api_secret = process.env.GA_API_SECRET,
     measurementId: measurement_id = (
       process.env.GA_MEASUREMENT_ID ||
@@ -66,6 +74,7 @@ export const googleAnalytics = async (
       body: JSON.stringify({
         client_id,
         events,
+        debug_mode: debug,
       })
     }
   );
