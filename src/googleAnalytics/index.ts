@@ -67,24 +67,21 @@ export const googleAnalytics = async (
     return;
   }
 
+  /**
+   * @see https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events
+   */
+  const endpoint = debug ? "/debug/mp/collect" : "/mp/collect";
+  const url = new URL(endpoint, "https://www.google-analytics.com");
+  const searchParams = new URLSearchParams({ api_secret, measurement_id });
+  url.search = searchParams.toString();
+
   const { status } = await fetch(
-    `https://www.google-analytics.com/mp/collect?measurement_id=${measurement_id}&api_secret=${api_secret}`,
+    url.href,
     {
       method: "POST",
       body: JSON.stringify({
         client_id,
-        events:
-          debug
-            ? events.map(
-              (event) => ({
-                ...event,
-                params: {
-                  ...event.params,
-                  debug_mode: true,
-                },
-              })
-            )
-            : events,
+        events,
       })
     }
   );
