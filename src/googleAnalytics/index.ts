@@ -1,8 +1,6 @@
 export interface GoogleAnalyticsEvent {
   name: string;
-  params: {
-    [key: string]: string;
-  };
+  params: Parameters<typeof JSON.stringify>[0];
 }
 
 export interface GoogleAnalyticsOptions {
